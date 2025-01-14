@@ -7,14 +7,14 @@ import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/fireb
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyDRCikmAmHNQvyD4Mk6Q6izTwmAK41CxuQ",
-    authDomain: "arranchamento-2bec.firebaseapp.com",
-    databaseURL: "https://arranchamento-2bec-default-rtdb.firebaseio.com",
-    projectId: "arranchamento-2bec",
-    storageBucket: "arranchamento-2bec.firebasestorage.app",
-    messagingSenderId: "358113980416",
-    appId: "1:358113980416:web:5782e6e35198116360e8e5",
-    measurementId: "G-415P8ZB55G"
+    apiKey: "AIzaSyA01wXFd_9UEDo8JNPmRDhgWVMLe1PSv-I",
+    authDomain: "bec-214c1.firebaseapp.com",
+    databaseURL: "https://bec-214c1-default-rtdb.firebaseio.com/",
+    projectId: "bec-214c1",
+    storageBucket: "bec-214c1.firebasestorage.app",
+    messagingSenderId: "156145970714",
+    appId: "1:156145970714:web:c1a1d3ff9204c01c7beba3",
+    measurementId: "G-97L5Z8YB45"
 };
 
 // Initialize Firebase
