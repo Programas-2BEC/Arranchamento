@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Arranchamento</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Arranchamento</h1>
+    </header>
+    <main>
+        <div class="container">
+            <!-- Campo para Nome de Guerra -->
+            <section id="nome-guerra-container">
+                <label for="nome-guerra">Nome de Guerra:</label>
+                <input type="text" id="nome-guerra" placeholder="Digite seu nome de guerra" required>
+            </section>
+
+            <!-- Dias da Semana -->
+            <div id="dias-semana">
+                <!-- Botões para os dias serão gerados dinamicamente -->
+            </div>
+
+            <!-- Períodos de Arranchamento -->
+            <section id="periodos">
+                <h2>Selecione os períodos:</h2>
+                <div id="periodos-container">
+                    <!-- Checkboxes dos períodos aparecerão aqui -->
+                </div>
+            </section>
+
+            <!-- Prévia -->
+            <section id="preview">
+                <h3>Prévia das Seleções:</h3>
+                <ul id="lista-preview">
+                    <!-- A prévia será preenchida dinamicamente -->
+                </ul>
+            </section>
+
+            <!-- Botão para envio -->
+            <button id="enviar" disabled>Enviar Solicitação</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Sistema de Arranchamento</p>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"></script>
+
+    <!-- Firebase Configuração -->
+    <script src="script.js" type="module"></script>
+
+</body>
+</html>
