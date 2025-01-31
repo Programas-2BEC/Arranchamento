@@ -1,58 +1,99 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Arranchamento</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Login Arranchamento</title>
+    <link rel="stylesheet" href="auth.css">
 </head>
 <body>
-    <header>
-        <h1>Sistema de Arranchamento</h1>
-    </header>
-    <main>
-        <div class="container">
-            <!-- Campo para Nome de Guerra -->
-            <section id="nome-guerra-container">
-                <label for="nome-guerra">Nome de Guerra:</label>
-                <input type="text" id="nome-guerra" placeholder="Digite seu nome de guerra" required>
-            </section>
-
-            <!-- Dias da Semana -->
-            <div id="dias-semana">
-                <!-- Botões para os dias serão gerados dinamicamente -->
+    <div id="login-signup-container">
+        <!-- Tela de Login -->
+        <div id="login-card" class="card">
+            <div id="login-header" class="header">
+                <!-- Logo do sistema -->
+                <img id="login-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxT48CgEK4aPm0bsUAbFSolocIx5DpZIxBMQ&s" alt="Logo">
+                <!-- Título do card de login -->
+                <h2 id="login-title">Login Arranchamento</h2>
             </div>
-
-            <!-- Períodos de Arranchamento -->
-            <section id="periodos">
-                <h2>Selecione os períodos:</h2>
-                <div id="periodos-container">
-                    <!-- Checkboxes dos períodos aparecerão aqui -->
+            <!-- Formulário de Login -->
+            <form id="login-form">
+                <input type="text" id="login-nomeGuerra" placeholder="Posto/Graduação e Nome de Guerra" required>
+                <input type="password" id="login-senha" placeholder="Senha" required>
+                <div id="login-options" class="options">
+                    <!-- Checkbox para salvar informações de login -->
+                    <label id="remember-me-label">
+                        <input type="checkbox" id="login-remember-me">
+                        Salvar Informações de Login
+                    </label>
+                    <!-- Link para recuperação de senha -->
+                    <a href="#" id="login-forgot-password" class="forgot-password">Esqueceu sua senha ?</a>
                 </div>
-            </section>
-
-            <!-- Prévia -->
-            <section id="preview">
-                <h3>Prévia das Seleções:</h3>
-                <ul id="lista-preview">
-                    <!-- A prévia será preenchida dinamicamente -->
-                </ul>
-            </section>
-
-            <!-- Botão para envio -->
-            <button id="enviar" disabled>Enviar Solicitação</button>
+                <!-- Botão para enviar o formulário de login -->
+                <button type="submit" id="login-button" class="btn-primary">Log In</button>
+            </form>
+            <!-- Link para alternar para a tela de registro -->
+            <p id="login-signup-link" class="signup-link">
+                Não tem uma conta ? <a href="#" id="show-register">Registre-se</a>
+            </p>
         </div>
-    </main>
-    <footer>
-        <p>&copy; 2024 Sistema de Arranchamento</p>
-    </footer>
+
+        <!-- Tela de Registro -->
+        <div id="signup-card" class="card">
+            <div id="signup-header" class="header">
+                <!-- Título do card de registro -->
+                <img id="login-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxT48CgEK4aPm0bsUAbFSolocIx5DpZIxBMQ&s" alt="Logo">
+                <h2 id="signup-title">Tela de Registro</h2>
+            </div>
+            <!-- Formulário de Registro -->
+            <form id="signup-form">
+        
+                <!-- Seletor de Graduação/Posto -->
+                <label for="signup-graduacao">Graduação/Posto:</label>
+                <select id="signup-graduacao" required>
+                    <optgroup label="Praças">
+                        <option value="SD">Soldado (SD)</option>
+                        <option value="CB">Cabo (CB)</option>
+                        <option value="SGT">Sargento (SGT)</option>
+                        <option value="ST">Subtenente (ST)</option>
+                    </optgroup>
+                    <optgroup label="Oficiais">
+                        <option value="Ten">Tenente (Ten)</option>
+                        <option value="Cap">Capitão (Cap)</option>
+                        <option value="Maj">Major (Maj)</option>
+                        <option value="Ten Cel">Tenente-Coronel (Ten Cel)</option>
+                        <option value="Cel">Coronel (Cel)</option>
+                        <option value="Gen">General (Gen)</option>
+                    </optgroup>
+                </select>
+        
+                <!-- Nome de Guerra -->
+                <label for="signup-nomeGuerra">Nome de Guerra:</label>
+                <input type="text" id="signup-nomeGuerra" placeholder="Digite seu Nome de Guerra" required>
+        
+                <!-- Campo de Senha -->
+                <label for="signup-password">Senha:</label>
+                <input type="password" id="signup-password" placeholder="Senha" required>
+                <label for="signup-password">Confirmar Senha:</label>
+                <input type="password" id="signup-confirm-password" placeholder="Confirmar Senha" required>
+        
+                <!-- Botão de Registro -->
+                <button type="submit" id="signup-button" class="btn-primary">Registre-se</button>
+            </form>
+            <!-- Link para alternar para a tela de login -->
+            <p id="signup-signin-link" class="signin-link">
+                Já tem uma conta ? <a href="#" id="show-login">Voltar a Tela de Login</a>
+            </p>
+        </div>
+    </div>
 
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"></script>
+    
 
-    <!-- Firebase Configuração -->
-    <script src="script.js" type="module"></script>
-
+    <!-- Script JS para alternar entre as telas -->
+    <script src="auth.js" type="module"></script>
 </body>
 </html>

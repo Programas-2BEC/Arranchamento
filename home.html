@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Arranchamento</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div id="header-content">
+            <h1>Sistema de Arranchamento</h1>
+            <div id="user-info-container">
+                <span id="user-name">Carregando...</span>
+                <button id="logout-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10 15a1 1 0 0 1-1 1H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5a1 1 0 0 1 1 1v1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h5v1zm3.854-8.354a.5.5 0 0 1 0 .708l-3 3a.5.5 0 1 1-.708-.708L12.293 8.5H6.5a.5.5 0 0 1 0-1h5.793l-2.147-2.146a.5.5 0 0 1 .708-.708l3 3z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <!-- Dias da Semana -->
+            <div id="dias-semana"></div>
+
+            <!-- Períodos de Arranchamento -->
+            <section id="periodos">
+                <h2>Selecione os períodos:</h2>
+                <div id="periodos-container"></div>
+            </section>
+
+            <!-- Prévia -->
+            <section id="preview">
+                <h3>Prévia das Seleções:</h3>
+                <ul id="lista-preview"></ul>
+            </section>
+
+            <!-- Botão para envio -->
+            <button id="enviar" disabled>Enviar Solicitação</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Sistema de Arranchamento</p>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js"></script>
+
+    <!-- Script da Página -->
+    <script src="script.js" type="module"></script>
+
+</body>
+</html>

@@ -1,17 +1,12 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
 
 // Configuração do Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyA01wXFd_9UEDo8JNPmRDhgWVMLe1PSv-I",
     authDomain: "bec-214c1.firebaseapp.com",
-    databaseURL: "https://bec-214c1-default-rtdb.firebaseio.com/",
+    databaseURL: "https://bec-214c1-default-rtdb.firebaseio.com",
     projectId: "bec-214c1",
     storageBucket: "bec-214c1.firebasestorage.app",
     messagingSenderId: "156145970714",
@@ -19,93 +14,77 @@ const firebaseConfig = {
     measurementId: "G-97L5Z8YB45"
 };
 
-// Inicializar Firebase
+// Inicializa Firebase
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 const db = getDatabase(app);
 
-async function exibirArranchamentos() {
+// Deixa a página invisível até confirmar se o usuário é admin
+document.body.style.display = "none";
+
+// Verifica se o usuário tem permissão para acessar a página admin
+onAuthStateChanged(auth, async (user) => {
+    if (user) {
+        const userId = user.uid;
+        const userRef = ref(db, `usuarios/${userId}`);
+
+        try {
+            const snapshot = await get(userRef);
+
+            if (snapshot.exists() && snapshot.val().tipo === "admin") {
+                document.body.style.display = "block"; // Exibe a página se for admin
+                carregarArranchamentos(); // Carrega os dados
+            } else {
+                alert("Acesso negado! Você não tem permissão para acessar esta página.");
+                window.location.replace("home.html");
+            }
+        } catch (error) {
+            console.error("Erro ao buscar dados do usuário:", error);
+            window.location.replace("home.html");
+        }
+    } else {
+        window.location.replace("index.html"); // Redireciona para login se não estiver autenticado
+    }
+});
+
+// Função para carregar os arranchamentos do Firebase
+async function carregarArranchamentos() {
     try {
-        const tabelaBody = document.getElementById('tabela-arrachamentos-body');
+        const tabelaBody = document.getElementById("tabela-arrachamentos-body");
 
         if (!tabelaBody) {
-            console.error('Elemento tabela-arrachamentos-body não encontrado no DOM.');
+            console.error("Elemento tabela-arrachamentos-body não encontrado no DOM.");
             return;
         }
 
-        const dbRef = ref(db, 'arrachamentos/');
+        const dbRef = ref(db, "arrachamentos/");
         const snapshot = await get(dbRef);
 
         if (!snapshot.exists()) {
-            alert('Nenhum arranchamento encontrado.');
+            tabelaBody.innerHTML = "<tr><td colspan='3'>Nenhum arranchamento encontrado.</td></tr>";
             return;
         }
 
         const arranchamentos = snapshot.val();
-        tabelaBody.innerHTML = ''; // Limpa a tabela antes de preenchê-la
+        tabelaBody.innerHTML = ""; // Limpa a tabela antes de preenchê-la
 
-        Object.keys(arranchamentos).forEach(nomeGuerra => {
-            const dados = arranchamentos[nomeGuerra];
-            const dias = dados?.dias || {};
+        Object.entries(arranchamentos).forEach(([nomeGuerra, detalhes]) => {
+            const dias = detalhes.dias || {};
 
-            Object.keys(dias).forEach(data => {
-                const refeicoes = dias[data];
-                const refeicoesTexto = refeicoes.join(', ');
-
-                const linha = document.createElement('tr');
-                const colunaNome = document.createElement('td');
-                const colunaData = document.createElement('td');
-                const colunaRefeicoes = document.createElement('td');
-
-                colunaNome.textContent = nomeGuerra;
-                colunaData.textContent = data;
-                colunaRefeicoes.textContent = refeicoesTexto;
-
-                linha.appendChild(colunaNome);
-                linha.appendChild(colunaData);
-                linha.appendChild(colunaRefeicoes);
-
+            Object.entries(dias).forEach(([data, refeicoes]) => {
+                const linha = document.createElement("tr");
+                linha.innerHTML = `
+                    <td>${nomeGuerra}</td>
+                    <td>${data}</td>
+                    <td>${refeicoes.join(", ")}</td>
+                `;
                 tabelaBody.appendChild(linha);
             });
         });
 
-        console.log('Dados carregados:', arranchamentos);
+        console.log("Dados carregados:", arranchamentos);
     } catch (error) {
-        console.error('Erro ao carregar arranchamentos:', error);
-        alert('Erro ao carregar os dados. Verifique o console para mais detalhes.');
+        console.error("Erro ao carregar arranchamentos:", error);
+        alert("Erro ao carregar os dados. Verifique o console para mais detalhes.");
     }
 }
-
-// Função para filtrar a tabela
-function filtrarTabela() {
-    const filtroNome = document.getElementById('filtro-nome').value.toLowerCase();
-    const filtroData = document.getElementById('filtro-data').value.toLowerCase();
-    const filtroRefeicoes = document.getElementById('filtro-refeicoes').value.toLowerCase();
-
-    const tabelaBody = document.getElementById('tabela-arrachamentos-body');
-    const linhas = tabelaBody.getElementsByTagName('tr');
-
-    Array.from(linhas).forEach(linha => {
-        const colunaNome = linha.cells[0]?.textContent.toLowerCase() || '';
-        const colunaData = linha.cells[1]?.textContent.toLowerCase() || '';
-        const colunaRefeicoes = linha.cells[2]?.textContent.toLowerCase() || '';
-
-        const correspondeNome = colunaNome.includes(filtroNome);
-        const correspondeData = colunaData.includes(filtroData);
-        const correspondeRefeicoes = colunaRefeicoes.includes(filtroRefeicoes);
-
-        if (correspondeNome && correspondeData && correspondeRefeicoes) {
-            linha.style.display = ''; // Mostra a linha
-        } else {
-            linha.style.display = 'none'; // Oculta a linha
-        }
-    });
-}
-
-// Adiciona os event listeners para os inputs
-document.getElementById('filtro-nome').addEventListener('input', filtrarTabela);
-document.getElementById('filtro-data').addEventListener('input', filtrarTabela);
-document.getElementById('filtro-refeicoes').addEventListener('input', filtrarTabela);
-
-document.addEventListener('DOMContentLoaded', () => {
-    exibirArranchamentos(); // Chama a função após o DOM estar carregado
-});

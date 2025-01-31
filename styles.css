@@ -7,18 +7,55 @@ body {
     color: #333;
 }
 
+/* Cabeçalho */
 header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #013220;
     color: white;
+    padding: 20px 0;
     text-align: center;
-    padding: 20px;
 }
 
-h1 {
-    margin: 0;
+/* Agrupa o título e as informações do usuário */
+#header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Container Principal */
+/* Nome do usuário e botão de logout - AGORA EM COLUNA */
+#user-info {
+    display: flex;
+    flex-direction: column; /* Alinha o nome e o botão um embaixo do outro */
+    align-items: center;
+    margin-top: 10px; /* Dá um espaçamento entre o título e o nome do usuário */
+}
+
+/* Nome do usuário */
+#user-name {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #d9d9d9;
+    font-size: 1.1em;
+    margin-bottom: 5px; /* Espaço entre o nome e o botão de logout */
+}
+
+/* Botão de logout */
+#logout-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#logout-button:hover {
+    background-color: #024626;
+}
+
+/* Container */
 .container {
     max-width: 600px;
     margin: 20px auto;
@@ -26,26 +63,7 @@ h1 {
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Nome de Guerra */
-#nome-guerra-container {
-    margin-bottom: 20px;
     text-align: center;
-}
-
-#nome-guerra-container label {
-    font-weight: bold;
-    font-size: 1.2em;
-    color: #013220;
-}
-
-#nome-guerra-container input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1em;
 }
 
 /* Dias da Semana */
@@ -64,12 +82,6 @@ h1 {
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    font-weight: bold;
-    text-align: center;
-}
-
-#dias-semana button:hover {
-    background: #6B8E23;
 }
 
 #dias-semana button.active {
@@ -77,50 +89,11 @@ h1 {
 }
 
 /* Períodos */
-#periodos {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-#periodos h2 {
-    margin-bottom: 10px;
-    color: #013220;
-}
-
 #periodos-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 10px;
-}
-
-#periodos-container label {
-    font-size: 1em;
-}
-
-/* Prévia */
-#preview {
-    margin-bottom: 20px;
     text-align: left;
-}
-
-#preview h3 {
-    color: #013220;
-    margin-bottom: 10px;
-}
-
-#lista-preview {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-#lista-preview li {
-    margin: 5px 0;
-    padding: 8px;
-    background: #f0f0f0;
-    border-radius: 4px;
-    color: #333;
 }
 
 /* Botão Enviar */
@@ -139,8 +112,4 @@ button#enviar {
 button#enviar:disabled {
     background: #ccc;
     cursor: not-allowed;
-}
-
-button#enviar:hover:enabled {
-    background: #024626;
 }
