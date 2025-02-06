@@ -66,16 +66,17 @@ header {
     text-align: center;
 }
 
-/* Dias da Semana */
+/* Container dos botões de dias da semana */
 #dias-semana {
     display: flex;
-    overflow-x: auto; /* Permite rolagem horizontal */
-    gap: 10px; /* Espaçamento entre os botões */
-    padding: 10px 15px; /* Espaçamento interno para evitar cortes */
+    overflow-x: auto; /* Ativa a rolagem horizontal */
+    gap: 10px;
+    padding: 10px; /* Espaçamento padrão */
     margin-bottom: 20px;
-    scroll-behavior: smooth; /* Suaviza o movimento de rolagem */
-    border: 1px solid #ddd; /* Opcional: borda para destacar */
-    box-sizing: border-box; /* Inclui o padding dentro do tamanho total */
+    scroll-behavior: smooth;
+    white-space: nowrap; /* Mantém os botões em linha */
+    position: relative;
+    scroll-padding-left: 0px; /* Garante que o scroll comece no primeiro botão */
 }
 
 /* Adiciona um espaçamento falso antes do primeiro botão para evitar cortes */
@@ -110,14 +111,12 @@ header {
 
 /* Estilização dos Botões */
 #dias-semana button {
-    flex: 0 0 auto; /* Evita redimensionamento automático */
     padding: 10px;
     background: #556B2F;    
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    font-weight: bold;
     text-align: center;
     font-size: 14px;
     min-width: 80px; /* Define um tamanho mínimo */
@@ -156,22 +155,11 @@ button#enviar:disabled {
 
 
 
-/* Efeito apenas para telas menores que 768px */
+/* Garante que o primeiro botão não suma em telas pequenas */
 @media (max-width: 768px) {
     #dias-semana {
-        padding-left: 15px; /* Adiciona um espaço extra no início apenas em telas pequenas */
-        padding-right: 15px;
-    }
-
-    #dias-semana::before {
-        content: "";
-        display: block;
-        width: 10px; /* Espaçamento antes do primeiro botão */
-        flex-shrink: 0;
-    }
-
-    #dias-semana button:first-child {
-        margin-left: 5px;
+        padding-left: 0px; /* Remove qualquer espaçamento extra */
+        scroll-padding-left: 0px; /* Mantém o primeiro botão visível */
     }
 }
 
