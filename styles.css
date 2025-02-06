@@ -154,15 +154,24 @@ button#enviar:disabled {
 }
 
 
-/* Responsividade */
+
+
+/* Efeito apenas para telas menores que 768px */
 @media (max-width: 768px) {
     #dias-semana {
-        justify-content: center; /* Centraliza os botões */
+        padding-left: 15px; /* Adiciona um espaço extra no início apenas em telas pequenas */
+        padding-right: 15px;
     }
 
-    #dias-semana button {
-        flex: 1 1 calc(33.33% - 10px); /* Ajusta para 3 botões por linha */
-        font-size: 12px; /* Reduz o tamanho do texto */
+    #dias-semana::before {
+        content: "";
+        display: block;
+        width: 10px; /* Espaçamento antes do primeiro botão */
+        flex-shrink: 0;
+    }
+
+    #dias-semana button:first-child {
+        margin-left: 5px;
     }
 }
 
