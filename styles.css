@@ -109,17 +109,15 @@ header {
     background: #6B8E23; /* Cor ao passar o mouse */
 }
 
-/* Estilização dos Botões */
 #dias-semana button {
+    flex: 1;
     padding: 10px;
-    background: #556B2F;    
+    margin: 5px;
+    background: #556B2F;
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    text-align: center;
-    font-size: 14px;
-    min-width: 80px; /* Define um tamanho mínimo */
 }
 
 #dias-semana button.active {
