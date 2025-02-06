@@ -78,8 +78,9 @@ header {
     box-sizing: border-box; /* Inclui o padding dentro do tamanho total */
 }
 
+/* Espaçamento extra no primeiro botão para evitar corte */
 #dias-semana button:first-child {
-    margin-left: 10px; /* Garante que o primeiro botão tenha espaço à esquerda */
+    margin-left: 5px; /* Adiciona um pequeno espaço antes do primeiro botão */
 }
 
 #dias-semana button:last-child {
@@ -99,15 +100,19 @@ header {
     background: #6B8E23; /* Cor ao passar o mouse */
 }
 
+/* Estilização dos Botões */
 #dias-semana button {
-    flex: 1;
+    flex: 0 0 auto; /* Evita redimensionamento automático */
     padding: 10px;
-    margin: 5px;
-    background: #556B2F;
+    background: #556B2F;    
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+    min-width: 80px; /* Define um tamanho mínimo */
 }
 
 #dias-semana button.active {
