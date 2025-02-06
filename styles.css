@@ -76,6 +76,14 @@ header {
     scroll-behavior: smooth; /* Suaviza o movimento de rolagem */
 }
 
+#dias-semana button:first-child {
+    margin-left: 10px; /* Garante que o primeiro botão tenha espaço à esquerda */
+}
+
+#dias-semana button:last-child {
+    margin-right: 10px; /* Garante que o último botão tenha espaço à direita */
+}
+
 #dias-semana::-webkit-scrollbar {
     height: 8px; /* Altura da barra de rolagem */
 }
