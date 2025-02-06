@@ -71,11 +71,19 @@ header {
     display: flex;
     overflow-x: auto; /* Permite rolagem horizontal */
     gap: 10px; /* Espaçamento entre os botões */
-    padding: 20px; /* Espaçamento interno para evitar cortes */
+    padding: 10px 15px; /* Espaçamento interno para evitar cortes */
     margin-bottom: 20px;
     scroll-behavior: smooth; /* Suaviza o movimento de rolagem */
     border: 1px solid #ddd; /* Opcional: borda para destacar */
     box-sizing: border-box; /* Inclui o padding dentro do tamanho total */
+}
+
+/* Adiciona um espaçamento falso antes do primeiro botão para evitar cortes */
+#dias-semana::before {
+    content: "";
+    display: block;
+    width: 10px; /* Define um pequeno espaço inicial */
+    flex-shrink: 0; /* Impede que esse espaço seja reduzido */
 }
 
 /* Espaçamento extra no primeiro botão para evitar corte */
