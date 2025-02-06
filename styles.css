@@ -69,7 +69,9 @@ header {
 /* Dias da Semana */
 #dias-semana {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap; /* Permite que os botões quebrem linha */
+    gap: 10px; /* Espaçamento entre os botões */
+    justify-content: space-between; /* Ajusta os botões dentro do espaço disponível */
     margin-bottom: 20px;
 }
 
