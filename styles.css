@@ -69,11 +69,13 @@ header {
 /* Dias da Semana */
 #dias-semana {
     display: flex;
-    overflow-x: auto; /* Adiciona rolagem horizontal se necessário */
+    overflow-x: auto; /* Permite rolagem horizontal */
     gap: 10px; /* Espaçamento entre os botões */
-    padding: 10px 0; /* Espaçamento interno para melhorar a aparência */
+    padding: 10px; /* Espaçamento interno para evitar cortes */
     margin-bottom: 20px;
     scroll-behavior: smooth; /* Suaviza o movimento de rolagem */
+    border: 1px solid #ddd; /* Opcional: borda para destacar */
+    box-sizing: border-box; /* Inclui o padding dentro do tamanho total */
 }
 
 #dias-semana button:first-child {
