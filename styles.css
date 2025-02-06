@@ -88,11 +88,11 @@ header {
 
 /* Espaçamento extra no primeiro botão para evitar corte */
 #dias-semana button:first-child {
-    margin-left: 10px; /* Adiciona um pequeno espaço antes do primeiro botão */
+    margin-left: 5px; /* Adiciona um pequeno espaço antes do primeiro botão */
 }
 
 #dias-semana button:last-child {
-    margin-right: 10px; /* Garante que o último botão tenha espaço à direita */
+    margin-right: 5px; /* Garante que o último botão tenha espaço à direita */
 }
 
 #dias-semana::-webkit-scrollbar {
