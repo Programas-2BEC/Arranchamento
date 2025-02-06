@@ -71,7 +71,7 @@ header {
     display: flex;
     overflow-x: auto; /* Permite rolagem horizontal */
     gap: 10px; /* Espaçamento entre os botões */
-    padding: 10px 15px; /* Espaçamento interno para evitar cortes */
+    padding: 10px 55px; /* Espaçamento interno para evitar cortes */
     margin-bottom: 20px;
     scroll-behavior: smooth; /* Suaviza o movimento de rolagem */
     border: 1px solid #ddd; /* Opcional: borda para destacar */
