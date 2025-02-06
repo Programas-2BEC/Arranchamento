@@ -115,17 +115,25 @@ button#enviar:disabled {
 }
 
 
-/* Responsividade para telas menores */
+/* Responsividade */
 @media (max-width: 768px) {
+    #dias-semana {
+        justify-content: center; /* Centraliza os botões */
+    }
+
     #dias-semana button {
         flex: 1 1 calc(33.33% - 10px); /* Ajusta para 3 botões por linha */
-        font-size: 12px; /* Diminui mais o texto em telas menores */
+        font-size: 12px; /* Reduz o tamanho do texto */
     }
 }
 
 @media (max-width: 480px) {
+    #dias-semana {
+        justify-content: center;
+    }
+
     #dias-semana button {
-        flex: 1 1 calc(50% - 10px); /* Ajusta para 2 botões por linha em telas muito pequenas */
-        font-size: 10px; /* Texto menor ainda */
+        flex: 1 1 100%; /* Cada botão ocupa toda a linha em telas pequenas */
+        font-size: 12px; /* Reduz o texto ainda mais */
     }
 }
