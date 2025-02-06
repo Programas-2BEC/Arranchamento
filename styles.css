@@ -69,10 +69,24 @@ header {
 /* Dias da Semana */
 #dias-semana {
     display: flex;
-    flex-wrap: wrap; /* Permite que os botões quebrem linha */
+    overflow-x: auto; /* Adiciona rolagem horizontal se necessário */
     gap: 10px; /* Espaçamento entre os botões */
-    justify-content: space-between; /* Ajusta os botões dentro do espaço disponível */
+    padding: 10px 0; /* Espaçamento interno para melhorar a aparência */
     margin-bottom: 20px;
+    scroll-behavior: smooth; /* Suaviza o movimento de rolagem */
+}
+
+#dias-semana::-webkit-scrollbar {
+    height: 8px; /* Altura da barra de rolagem */
+}
+
+#dias-semana::-webkit-scrollbar-thumb {
+    background: #556B2F; /* Cor da barra de rolagem */
+    border-radius: 4px; /* Bordas arredondadas */
+}
+
+#dias-semana::-webkit-scrollbar-thumb:hover {
+    background: #6B8E23; /* Cor ao passar o mouse */
 }
 
 #dias-semana button {
