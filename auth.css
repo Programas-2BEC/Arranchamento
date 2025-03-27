@@ -8,7 +8,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 /* Container principal de login/registro */
@@ -59,7 +59,7 @@ form input {
     background-color: white;
     color: #333;
     cursor: pointer;
-    appearance: none; /* Remove o estilo padrão do navegador */
+    appearance: none;
 }
 
 /* Adiciona um ícone de seta customizado */
@@ -73,7 +73,7 @@ form input {
 /* Quando o seletor estiver focado */
 #signup-graduacao:focus {
     outline: none;
-    border-color: #024626; /* Verde escuro ao focar */
+    border-color: #024626;
     box-shadow: 0 0 5px rgba(2, 70, 38, 0.5);
 }
 
@@ -91,19 +91,18 @@ optgroup {
 }
 
 #signup-form .label {
-    text-align: left    ;
+    text-align: left;
 }
 
 /* Alinha os labels à esquerda */
 form label {
-    display: block; /* Faz com que os labels ocupem uma linha inteira */
-    text-align: left; /* Alinha o texto do label à esquerda */
+    display: block;
+    text-align: left;
     font-size: 14px;
     font-weight: bold;
     color: #333;
-    margin-bottom: 5px; /* Espaço entre o label e o input */
+    margin-bottom: 5px;
 }
-
 
 /* Botões */
 .btn-primary {
@@ -115,10 +114,12 @@ form label {
     border-radius: 10px;
     cursor: pointer;
     margin-top: 10px;
+    transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
     background-color: #013220;
+    transform: translateY(-2px);
 }
 
 /* Opções de lembrar senha e links */
@@ -131,19 +132,19 @@ form label {
 
 /* Estilo para alinhar checkbox e texto na mesma linha */
 #remember-me-label {
-    display: flex; /* Mantém checkbox e texto na mesma linha */
-    align-items: center; /* Centraliza verticalmente */
-    gap: 8px; /* Espaçamento entre o checkbox e o texto */
-    font-size: 10px; /* Ajusta o tamanho do texto */
-    color: #333; /* Define a cor do texto */
-    cursor: pointer; /* Permite clicar no label */
-    white-space: nowrap; /* Impede a quebra de linha */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    color: #333;
+    cursor: pointer;
+    white-space: nowrap;
 }
 
 /* Ajuste no checkbox */
 #login-remember-me {
     margin: 0;
-    width: 16px; /* Tamanho consistente do checkbox */
+    width: 16px;
     height: 16px;
 }
 
@@ -187,4 +188,51 @@ form label {
 .card:not(.active) {
     opacity: 0;
     transform: translateY(-20px);
+}
+
+/* ============================================= */
+/* IMAGEM DE FUNDO PARA DESKTOP (NOVAS REGRAS) */
+/* ============================================= */
+@media (min-width: 768px) {
+    body {
+        background-image: url('background.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+    }
+    
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+    }
+    
+    .card {
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .btn-primary {
+        background-color: rgba(2, 70, 38, 0.9);
+    }
+    
+    .btn-primary:hover {
+        background-color: rgba(1, 50, 32, 1);
+    }
+    
+    /* Melhorias para telas maiores */
+    @media (min-width: 992px) {
+        .card {
+            width: 350px;
+            padding: 30px;
+        }
+    }
 }
