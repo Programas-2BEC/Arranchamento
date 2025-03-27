@@ -171,3 +171,32 @@ button#enviar:disabled {
         font-size: 12px; /* Reduz o texto ainda mais */
     }
 }
+
+/* Imagem de fundo para desktop */
+@media (min-width: 768px) {
+    body {
+        background-image: url('background.jpg'); /* Substitua pelo caminho da sua imagem */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    
+    /* Opcional: adicionar overlay escuro para melhor legibilidade */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+    }
+    
+    #login-signup-container {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+}
